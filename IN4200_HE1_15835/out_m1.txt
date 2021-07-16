@@ -1,0 +1,62 @@
+/opt/homebrew/bin/gcc-10 -Wall -O3 -fopenmp src/*.c -o bin/main.o
+./bin/main.o
+----------- Running tests  -----------
+- read_graph_from_file1          => OK
+- read_graph_from_file2          => OK
+- create_SNN_graph1              => OK
+- create_SNN_graph2              => OK
+- create_SNN_graph1_OMP          => OK
+- create_SNN_graph2_OMP          => OK
+- self_consistency:              => OK
+No errors!
+----------- Tests Complete -----------
+Running Benchmarks:
+2D Table representation
+- Serial:
+read_graph_from_file1() time = 12.8
+create_SNN_graph1() time = 124.8
+- Parallel:
+read_graph_from_file1() time = 13.3
+[Num Threads = 1] create_SNN_graph1() time = 124.2
+[Num Threads = 2] create_SNN_graph1() time = 127.3
+[Num Threads = 3] create_SNN_graph1() time = 131.5
+[Num Threads = 4] create_SNN_graph1() time = 131.6
+[Num Threads = 5] create_SNN_graph1() time = 148.3
+[Num Threads = 6] create_SNN_graph1() time = 162.6
+[Num Threads = 7] create_SNN_graph1() time = 174.4
+[Num Threads = 8] create_SNN_graph1() time = 184.7
+
+CRS representation
+- Serial:
+read_graph_from_file2() time = 7.9
+create_SNN_graph2() time = 91.7
+- Parallel:
+read_graph_from_file2() time = 8.2
+[Num Threads = 1] create_SNN_graph2_OMP() time = 88.9
+[Num Threads = 2] create_SNN_graph2_OMP() time = 92.0
+[Num Threads = 3] create_SNN_graph2_OMP() time = 92.1
+[Num Threads = 4] create_SNN_graph2_OMP() time = 93.9
+[Num Threads = 5] create_SNN_graph2_OMP() time = 96.5
+[Num Threads = 6] create_SNN_graph2_OMP() time = 99.0
+[Num Threads = 7] create_SNN_graph2_OMP() time = 101.1
+[Num Threads = 8] create_SNN_graph2_OMP() time = 101.4
+
+Looking for clusters in dat/simple-graph.txt:
+tau = 1
+Checking Node 0: -> [ 1 2 3 4 ]
+Checking Node 1: -> [ 0 2 3 4 ]
+Checking Node 2: -> [ 0 1 3 4 ]
+Checking Node 3: -> [ 0 1 2 4 ]
+Checking Node 4: -> [ 0 1 2 3 ]
+tau = 2
+Checking Node 0: -> [ 1 2 3 ]
+Checking Node 1: -> [ 0 2 3 ]
+Checking Node 2: -> [ 0 1 3 ]
+Checking Node 3: -> [ 0 1 2 ]
+Checking Node 4: -> [ ]
+tau = 3
+Checking Node 0: -> [ ]
+Checking Node 1: -> [ ]
+Checking Node 2: -> [ 3 ]
+Checking Node 3: -> [ 2 ]
+Checking Node 4: -> [ ]
